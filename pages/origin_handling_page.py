@@ -24,3 +24,9 @@ class OriginHandlingPage:
 
         return currency_field
 
+    def enter_density(self, density):
+        density_field = self.page.get_by_label("Density")
+
+        density_field.fill(str(density))
+
+        return density_field

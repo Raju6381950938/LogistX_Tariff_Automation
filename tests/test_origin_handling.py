@@ -17,5 +17,13 @@ def test_origin_handling(page_setup):
         path="screenshots/origin_handling_currency.png",
         full_page=True
        )
-
     
+    density = origin_handling.enter_density(167)
+    expect(density).to_have_value("167")
+
+    page.screenshot(
+        path="screenshots/origin_cartage_density.png",
+        full_page=True
+    )   
+
+     

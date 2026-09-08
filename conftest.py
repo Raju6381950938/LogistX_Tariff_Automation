@@ -5,7 +5,7 @@ from playwright.sync_api import Page
 @pytest.fixture
 def page_setup(page: Page):
     page.goto(
-        "https://dev.tariff.logistx.us/104338920338453802483362134034588548",
+        "https://dev.tariff.logistx.us/264855864409041979899496793594921337",
         wait_until="domcontentloaded"
     )
 
@@ -15,4 +15,3 @@ def page_setup(page: Page):
 
     page.wait_for_timeout(5000)
 
-    

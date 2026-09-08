@@ -197,17 +197,17 @@ def test_origin_cartage(page_setup):
     page.get_by_role("button", name="Submit Rank").click()
 
     page.screenshot(
-                    path="screenshots/origin_cartage_submit.png",
-                    full_page=True
-                    )
+    path="screenshots/origin_cartage_submit.png",
+    full_page=True
+    )                
 
     page.get_by_role("button", name="Confirm Submit").click()
 
     page.wait_for_timeout(2000)
 
     page.screenshot(
-                    path="screenshots/origin_cartage_Final_submit.png",
-                    full_page=True
-                    )
+    path="screenshots/origin_cartage_Final_submit.png",
+    full_page=True
+    )
 
  

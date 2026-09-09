@@ -1,8 +1,9 @@
+import pytest
 from playwright.sync_api import expect
 from pages.origin_cartage_page import OriginCartagePage
 
 
-
+@pytest.mark.order(1)
 def test_origin_cartage(page_setup):
 
     page = page_setup

@@ -1,5 +1,6 @@
 import random
 
+import pytest
 from playwright.sync_api import expect
 from pages.origin_handling_page import OriginHandlingPage
 from test_data.origin_handling_data import (
@@ -20,7 +21,7 @@ from test_data.origin_handling_data import (
     get_UOM,
 )
 
-
+@pytest.mark.order(2)
 def test_origin_handling(page_setup):
 
     page = page_setup
@@ -87,8 +88,6 @@ def test_origin_handling(page_setup):
 
     page.mouse.wheel(0, 500)
 
-    # Match the stable button text; the arrow glyph can be encoded differently
-    # depending on the terminal/editor encoding.
     page.get_by_role("button", name="Next - Fixed Fees").click()
 
     Export_Documents_value = random.randint(50,100)
@@ -182,11 +181,11 @@ def test_origin_handling(page_setup):
     page.locator("div.progress-node", has_text="4").click()
 
     
-    document_name = origin_handling.enter_document_name("Raju")
-    expect(document_name).to_have_value("Raju")
+    document_name = origin_handling.enter_document_name("vijay")
+    expect(document_name).to_have_value("vijay")
             
     page.screenshot(
-    path="screenshots/origin_cartage_Document_Name.png",
+    path="screenshots/origin_handling_Document_Name.png",
     full_page=True
     )
     
@@ -195,7 +194,7 @@ def test_origin_handling(page_setup):
 )
     
     page.screenshot(
-    path="screenshots/origin_cartage_Upload.png",
+    path="screenshots/origin_handling_Upload.png",
     full_page=True
     )
 

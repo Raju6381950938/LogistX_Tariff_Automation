@@ -1,17 +1,26 @@
 import pytest
-from playwright.sync_api import Page
+from playwright.sync_api import sync_playwright
 
 
 @pytest.fixture
-def page_setup(page: Page):
-    page.goto(
-        "https://dev.tariff.logistx.us/264855864409041979899496793594921337",
-        wait_until="domcontentloaded"
-    )
+def page_setup():
+    with sync_playwright() as p:
+        browser = p.chromium.launch(
+            headless=False,
+            slow_mo=1000
+        )
 
-    page.wait_for_timeout(5000)
+        page = browser.new_page()
 
-    yield page
+        page.goto(
+            "https://dev.tariff.logistx.us/195586042318260187944884050901207115",
+            wait_until="domcontentloaded"
+        )
 
-    page.wait_for_timeout(5000)
+        yield page
+
+        page.wait_for_timeout(5000)
+        browser.close()
+
+
 

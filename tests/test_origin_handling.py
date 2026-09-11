@@ -169,11 +169,9 @@ def test_origin_handling(page_setup):
 
     expect(fixed_rate_unit).to_have_value(fixed_rate_unit_value)
 
-    expected_fixed_rate = (
-        f"{fixed_rate_value:.2f}"
-        if fixed_rate_unit_value in {"VAN", "TRUCK"}
-        else str(fixed_rate_value)
-    )
+    # The rate input is a decimal field and the UI formats every value to
+    # two decimal places, regardless of the selected unit.
+    expected_fixed_rate = f"{fixed_rate_value:.2f}"
     expect(fixed_rate).to_have_value(expected_fixed_rate)
 
     page.mouse.wheel(0, -500)

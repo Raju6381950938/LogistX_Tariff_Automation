@@ -7,20 +7,20 @@ def page_setup():
     with sync_playwright() as p:
         browser = p.chromium.launch(
             headless=False,
-            slow_mo=1000
+            slow_mo=500,
+            args=["--disable-gpu"]
         )
 
         page = browser.new_page()
 
         page.goto(
-            "https://dev.tariff.logistx.us/195586042318260187944884050901207115",
+            "https://dev.tariff.logistx.us/123614366232414564921753344888600973",
             wait_until="domcontentloaded"
         )
 
         yield page
 
-        page.wait_for_timeout(5000)
+        page.wait_for_timeout(1000)
         browser.close()
-
 
 

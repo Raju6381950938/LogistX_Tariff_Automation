@@ -87,3 +87,5 @@ def get_fixed_rate_unit():
 def get_rate():
     return random.randint(10, 60)
 
+
+

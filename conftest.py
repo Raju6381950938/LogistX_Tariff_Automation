@@ -14,7 +14,7 @@ def page_setup():
         page = browser.new_page()
 
         page.goto(
-            "https://dev.tariff.logistx.us/123614366232414564921753344888600973",
+            "https://dev.tariff.logistx.us/264555548103179551004207127272898856",
             wait_until="domcontentloaded"
         )
 

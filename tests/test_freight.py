@@ -186,13 +186,69 @@ def test_freight(page_setup):
     transit_days = freight.enter_transit_days(transit_days_value)
     expect(transit_days).to_have_value(str(transit_days_value))
 
-    page.mouse.wheel(0, 300)
+    page.mouse.wheel(0, -300)
     
     page.get_by_role("button", name="Review & Submit →").click()
 
-    page.mouse.wheel(0, -300)
+    page.mouse.wheel(0, 1000)
+
+    document_name = freight.enter_document_name("Dinesh")
+    expect(document_name).to_have_value("Dinesh")
+            
+    page.screenshot(
+    path="screenshots/freight_Document_Name.png",
+    full_page=True
+    )
+    
+    page.locator('input[type="file"]').set_input_files(
+    "C:\\Users\\NISSI266\\Downloads\\pindrop_ble_sync_report_20260731_125152.pdf"
+)
+    page.screenshot(
+    path="screenshots/freight_Upload.png",
+    full_page=True
+    )
+
+    page.get_by_role("button", name="Add document").click()
+
+    page.wait_for_timeout(2000)
+    page.mouse.wheel(0, 500)
+
+    page.get_by_role("button", name="Submit Rank").click()
+
+    page.screenshot(
+    path="screenshots/freight_submit.png",
+    full_page=True
+    )
+
+    page.get_by_role("button", name="Confirm Submit").click()
+
+    page.wait_for_timeout(2000)
+
+    page.screenshot(
+    path="screenshots/freight_Final_submit.png",
+    full_page=True
+    )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     
+
+
+
+
 
 
 

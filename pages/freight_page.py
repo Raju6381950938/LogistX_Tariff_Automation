@@ -189,5 +189,10 @@ class FreightPage:
         transit_days_field.fill(str(transit_days))
         return transit_days_field
 
-    
+    def enter_document_name(self, document_name):
+             document_name_field = self.page.get_by_placeholder("e.g. Rate sheet")
+             document_name_field.fill(document_name)
+     
+             return document_name_field
 
+    

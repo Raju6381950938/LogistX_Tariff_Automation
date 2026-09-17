@@ -11,21 +11,45 @@ def get_currency():
 def get_density():
     return random.randint(10, 50)
 
-def get_terminal():
+def get_terminal_name():
     return random.choice([
         "T1",
         "T2",
-    ])
-
-def get_unpacking():
-    return random.choice([
-        "PER",
-    ])
-
-def get_arrival():
-    return random.choice([
         "T3",
-        "T4",
+    ])
+
+def get_terminal_address():
+    return random.choice([
+        "Meenambakkam",
+        "Domestic",
+        "International"
+    ])
+
+def get_terminal_postcode():
+    return random.choice([
+        "600020",
+        "600030",
+        "600040",
+    ])
+
+def get_arrival_name():
+    return random.choice([
+        "P1",
+        "P2",
+        "P3",
+    ])
+
+def get_arrival_address():
+    return random.choice([
+        "Domestic",
+        "International",
+    ])
+
+def get_arrival_postcode():
+    return random.choice([
+        "6000",
+        "6001",
+        "6002",
     ])
 
 def get_start_date():

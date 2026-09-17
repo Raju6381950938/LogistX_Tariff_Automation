@@ -10,6 +10,8 @@ def test_origin_cartage(page_setup):
 
     origin_cartage = OriginCartagePage(page)
 
+    page.locator(".lucide.lucide-x").click()
+
     currency = origin_cartage.select_currency("INR - Indian Rupee")
     expect(currency).to_have_value("INR - Indian Rupee")
 
@@ -26,24 +28,36 @@ def test_origin_cartage(page_setup):
         full_page=True
     )
 
-    departure_terminal = origin_cartage.enter_departure_terminal("T1")
-    expect(departure_terminal).to_have_value("T1")
+    for i in range(7):
+        page.locator("button[class='add-btn departure-terminal-add']").click()
+
+    for i in range(7):
+        page.get_by_role("button", name="Remove terminal").last.click()
+
+    terminal_name = origin_cartage.enter_terminal_name("T1")
+    expect(terminal_name).to_have_value("T1")
+
+    terminal_address = origin_cartage.enter_terminal_address("chennai")
+    expect(terminal_address).to_have_value("chennai")
+
+    terminal_postcode = origin_cartage.enter_terminal_postcode("600020")
+    expect(terminal_postcode).to_have_value("600020")
 
     page.screenshot(
         path="screenshots/origin_cartage_Terminal.png",
         full_page=True
         )
 
-    start_date = origin_cartage.enter_start_date("2026-09-05")
-    expect(start_date).to_have_value("2026-09-05")
+    start_date = origin_cartage.enter_start_date("2026-09-17")
+    expect(start_date).to_have_value("2026-09-17")
 
     page.screenshot(
         path="screenshots/origin_cartage_start_date.png",
         full_page=True
         )
 
-    end_date = origin_cartage.enter_end_date("2026-09-06")
-    expect(end_date).to_have_value("2026-09-06")
+    end_date = origin_cartage.enter_end_date("2026-09-20")
+    expect(end_date).to_have_value("2026-09-20")
     
     page.screenshot(
         path="screenshots/origin_cartage_End_date.png",
@@ -192,41 +206,41 @@ def test_origin_cartage(page_setup):
     page.mouse.wheel(0, 1000)
 
 
-#     document_name = origin_cartage.enter_document_name("Raju")
-#     expect(document_name).to_have_value("Raju")
+    document_name = origin_cartage.enter_document_name("Raju")
+    expect(document_name).to_have_value("Raju")
             
-#     page.screenshot(
-#     path="screenshots/origin_cartage_Document_Name.png",
-#     full_page=True
-#     )
+    page.screenshot(
+    path="screenshots/origin_cartage_Document_Name.png",
+    full_page=True
+    )
     
-#     page.locator('input[type="file"]').set_input_files(
-#     "C:\\Users\\NISSI266\\Downloads\\pindrop_ble_sync_report_20260731_125152.pdf"
-# )
+    page.locator('input[type="file"]').set_input_files(
+    "C:\\Users\\NISSI266\\Downloads\\pindrop_ble_sync_report_20260731_125152.pdf"
+)
     
-#     page.screenshot(
-#     path="screenshots/origin_cartage_Upload.png",
-#     full_page=True
-#     )
+    page.screenshot(
+    path="screenshots/origin_cartage_Upload.png",
+    full_page=True
+    )
 
-#     page.get_by_role("button", name="Add document").click()
+    page.get_by_role("button", name="Add document").click()
 
-#     page.wait_for_timeout(2000)
+    page.wait_for_timeout(2000)
 
-#     page.get_by_role("button", name="Submit Rank").click()
+    page.get_by_role("button", name="Submit Rank").click()
 
-#     page.screenshot(
-#     path="screenshots/origin_cartage_submit.png",
-#     full_page=True
-#     )                
+    page.screenshot(
+    path="screenshots/origin_cartage_submit.png",
+    full_page=True
+    )                
 
-#     page.get_by_role("button", name="Confirm Submit").click()
+    page.get_by_role("button", name="Confirm Submit").click()
 
-#     page.wait_for_timeout(2000)
+    page.wait_for_timeout(2000)
 
-#     page.screenshot(
-#     path="screenshots/origin_cartage_Final_submit.png",
-#     full_page=True
-#     )
+    page.screenshot(
+    path="screenshots/origin_cartage_Final_submit.png",
+    full_page=True
+    )
 
  

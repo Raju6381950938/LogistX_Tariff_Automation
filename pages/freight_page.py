@@ -32,22 +32,37 @@ class FreightPage:
     
             return density_field
 
-    def enter_terminal(self, terminal):
-            terminal_field = self.page.locator("#departure_terminal")
-            terminal_field.fill(str(terminal))
-            return terminal_field
-
-    def select_unpacking(self, unpacking):
-        unpacking_field = self.page.locator("#unpacking_portcode")
-        unpacking_field.select_option(value=unpacking)
-
-        return unpacking_field
-
-    def enter_arrival(self, arrival):
-                arrival_field = self.page.locator("#arrival_terminal")
-                arrival_field.fill(str(arrival))
-                return arrival_field
+    def enter_terminal_name(self, terminal_name):
+            terminal_name_field = self.page.locator("#departure_terminal")
+            terminal_name_field.fill(str(terminal_name))
+            return terminal_name_field
     
+    def enter_terminal_address(self, terminal_address):
+            terminal_address_field = self.page.locator("#departure_terminal_address")
+            terminal_address_field.fill(str(terminal_address))
+            return terminal_address_field
+    
+    def enter_terminal_postcode(self, terminal_postcode):
+            terminal_postcode_field = self.page.locator("#departure_terminal_postcode")
+            terminal_postcode_field.fill(str(terminal_postcode))
+            return terminal_postcode_field
+
+
+    def enter_arrival_name(self, arrival_name):
+            arrival_name_field = self.page.locator("#arrival_terminal")
+            arrival_name_field.fill(str(arrival_name))
+            return arrival_name_field
+    
+    def enter_arrival_address(self, arrival_address):
+            arrival_address_field = self.page.locator("#arrival_terminal_address")
+            arrival_address_field.fill(str(arrival_address))
+            return arrival_address_field
+    
+    def enter_arrival_postcode(self, arrival_postcode):
+            arrival_postcode_field = self.page.locator("#arrival_terminal_postcode")
+            arrival_postcode_field.fill(str(arrival_postcode))
+            return arrival_postcode_field
+
     def enter_start_date(self, start_date):
             start_date_field = self.page.get_by_label("Start Date")
     

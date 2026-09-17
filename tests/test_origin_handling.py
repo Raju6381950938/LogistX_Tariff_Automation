@@ -11,7 +11,6 @@ from test_data.origin_handling_data import (
     get_CISS_Fee,
     get_CMR_Fee,
     get_start_date,
-    get_terminal,
     get_Export_Licence_Fee,
     get_FOB_Tax,
     get_Origin_Carrier_Fee,
@@ -19,6 +18,12 @@ from test_data.origin_handling_data import (
     get_fixed_rate_unit,
     get_rate,
     get_UOM,
+    get_terminal_name,
+    get_terminal_address,
+    get_terminal_postcode,
+    get_terminal_name_another,
+    get_terminal_address_another,
+    get_terminal_postcode_another
 )
 
 @pytest.mark.order(2)
@@ -48,10 +53,31 @@ def test_origin_handling(page_setup):
         full_page=True
     )
 
-    terminal_value = get_terminal()
-    terminal = origin_handling.enter_terminal(terminal_value)
-    expect(terminal).to_have_value(str(terminal_value))
+    terminal_name_value = get_terminal_name()
+    terminal_name = origin_handling.enter_terminal_name(terminal_name_value)
+    expect(terminal_name).to_have_value(str(terminal_name_value))
 
+    terminal_address_value = get_terminal_address()
+    terminal_address = origin_handling.enter_terminal_address(terminal_address_value)
+    expect(terminal_address).to_have_value(str(terminal_address_value))
+
+    terminal_postcode_value = get_terminal_postcode()
+    terminal_postcode = origin_handling.enter_terminal_postcode(terminal_postcode_value)
+    expect(terminal_postcode).to_have_value(str(terminal_postcode_value))
+
+    page.locator("button[class='add-btn departure-terminal-add']").click()
+
+    terminal_name_another_value = get_terminal_name_another()
+    terminal_name_another = origin_handling.enter_terminal_name_another(terminal_name_another_value)
+    expect(terminal_name_another).to_have_value(str(terminal_name_another_value))
+    
+    terminal_address_another_value = get_terminal_address_another()
+    terminal_address_another = origin_handling.enter_terminal_address_another(terminal_address_another_value)
+    expect(terminal_address_another).to_have_value(str(terminal_address_another_value))
+    
+    terminal_postcode_another_value = get_terminal_postcode_another()
+    terminal_postcode_another = origin_handling.enter_terminal_postcode_another(terminal_postcode_another_value)
+    expect(terminal_postcode_another).to_have_value(str(terminal_postcode_another_value))
 
     page.screenshot(
             path="screenshots/origin_handling_terminal.png",
@@ -170,43 +196,43 @@ def test_origin_handling(page_setup):
     page.locator("div.progress-node", has_text="4").click()
 
     
-    # document_name = origin_handling.enter_document_name("vijay")
-    # expect(document_name).to_have_value("vijay")
+    document_name = origin_handling.enter_document_name("vijay")
+    expect(document_name).to_have_value("vijay")
             
-    # page.screenshot(
-    # path="screenshots/origin_handling_Document_Name.png",
-    # full_page=True
-    # )
+    page.screenshot(
+    path="screenshots/origin_handling_Document_Name.png",
+    full_page=True
+    )
     
-    # page.locator('input[type="file"]').set_input_files(
-    # "C:\\Users\\NISSI266\\Downloads\\pindrop_ble_sync_report_20260731_125152.pdf"
-    # )
+    page.locator('input[type="file"]').set_input_files(
+    "C:\\Users\\NISSI266\\Downloads\\pindrop_ble_sync_report_20260731_125152.pdf"
+    )
     
-    # page.screenshot(
-    # path="screenshots/origin_handling_Upload.png",
-    # full_page=True
-    # )
+    page.screenshot(
+    path="screenshots/origin_handling_Upload.png",
+    full_page=True
+    )
 
-    # page.get_by_role("button", name="Add document").click()
+    page.get_by_role("button", name="Add document").click()
 
-    # page.wait_for_timeout(2000)
-    # page.mouse.wheel(0, 500)
+    page.wait_for_timeout(2000)
+    page.mouse.wheel(0, 500)
 
-    # page.get_by_role("button", name="Submit Rank").click()
+    page.get_by_role("button", name="Submit Rank").click()
 
-    # page.screenshot(
-    # path="screenshots/origin_handling_submit.png",
-    # full_page=True
-    # )
+    page.screenshot(
+    path="screenshots/origin_handling_submit.png",
+    full_page=True
+    )
 
-    # page.get_by_role("button", name="Confirm Submit").click()
+    page.get_by_role("button", name="Confirm Submit").click()
 
-    # page.wait_for_timeout(2000)
+    page.wait_for_timeout(2000)
 
-    # page.screenshot(
-    # path="screenshots/origin_handling_Final_submit.png",
-    # full_page=True
-    # )
+    page.screenshot(
+    path="screenshots/origin_handling_Final_submit.png",
+    full_page=True
+    )
 
 
 

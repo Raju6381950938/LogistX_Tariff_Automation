@@ -9,9 +9,6 @@ from pages.freight_page import FreightPage
 
 from test_data.freight_data import (
     get_currency,
-    get_terminal,
-    get_unpacking,
-    get_arrival,
     get_start_date,
     get_end_date,
     get_terminal_fee,
@@ -29,6 +26,12 @@ from test_data.freight_data import (
     get_notification,
     get_carrier,
     get_transit_days,
+    get_terminal_name,
+    get_terminal_address,
+    get_terminal_postcode,
+    get_arrival_name,
+    get_arrival_address,
+    get_arrival_postcode,
 )
  
 
@@ -54,22 +57,34 @@ def test_freight(page_setup):
     density = freight.enter_density(density_value)
     expect(density).to_have_value(str(density_value))
 
-    terminal_value = get_terminal()
-    terminal = freight.enter_terminal(terminal_value)
-    expect(terminal).to_have_value(str(terminal_value))
+    terminal_name_value = get_terminal_name()
+    terminal_name = freight.enter_terminal_name(terminal_name_value)
+    expect(terminal_name).to_have_value(str(terminal_name_value))
+    
+    terminal_address_value = get_terminal_address()
+    terminal_address = freight.enter_terminal_address(terminal_address_value)
+    expect(terminal_address).to_have_value(str(terminal_address_value))
+    
+    terminal_postcode_value = get_terminal_postcode()
+    terminal_postcode = freight.enter_terminal_postcode(terminal_postcode_value)
+    expect(terminal_postcode).to_have_value(str(terminal_postcode_value))
 
     page.screenshot(
         path="screenshots/terminl.png",
         full_page=True
     )
 
-    unpacking_value = get_unpacking()
-    unpacking = freight.select_unpacking(unpacking_value)
-    expect(unpacking).to_have_value(unpacking_value)
-
-    arrival_value = get_arrival()
-    arrival = freight.enter_arrival(arrival_value)
-    expect(arrival).to_have_value(str(arrival_value))
+    arrival_name_value = get_arrival_name()
+    arrival_name = freight.enter_arrival_name(arrival_name_value)
+    expect(arrival_name).to_have_value(str(arrival_name_value))
+        
+    arrival_address_value = get_arrival_address()
+    arrival_address = freight.enter_arrival_address(arrival_address_value)
+    expect(arrival_address).to_have_value(str(arrival_address_value))
+        
+    arrival_postcode_value = get_arrival_postcode()
+    arrival_postcode = freight.enter_arrival_postcode(arrival_postcode_value)
+    expect(arrival_postcode).to_have_value(str(arrival_postcode_value))
     
     page.screenshot(
             path="screenshots/arrival.png",

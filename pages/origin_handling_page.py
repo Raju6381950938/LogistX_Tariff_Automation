@@ -29,10 +29,36 @@ class OriginHandlingPage:
         density_field.fill(str(density))
         return density_field
 
-    def enter_terminal(self, terminal):
-        terminal_field = self.page.get_by_label("terminal")
-        terminal_field.fill(str(terminal))
-        return terminal_field
+    def enter_terminal_name(self, terminal_name):
+        terminal_name_field = self.page.locator("#departure_terminal")
+        terminal_name_field.fill(str(terminal_name))
+        return terminal_name_field
+
+    def enter_terminal_address(self, terminal_address):
+        terminal_address_field = self.page.locator("#departure_terminal_address")
+        terminal_address_field.fill(str(terminal_address))
+        return terminal_address_field
+
+    def enter_terminal_postcode(self, terminal_postcode):
+        terminal_postcode_field = self.page.locator("#departure_terminal_postcode")
+        terminal_postcode_field.fill(str(terminal_postcode))
+        return terminal_postcode_field
+
+
+    def enter_terminal_name_another(self, terminal_name_another):
+            terminal_name_another_field = self.page.locator("#departure_terminal_2")
+            terminal_name_another_field.fill(str(terminal_name_another))
+            return terminal_name_another_field
+    
+    def enter_terminal_address_another(self, terminal_address_another):
+            terminal_address_another_field = self.page.locator("#departure_terminal_address_2")
+            terminal_address_another_field.fill(str(terminal_address_another))
+            return terminal_address_another_field
+    
+    def enter_terminal_postcode_another(self, terminal_postcode_another):
+            terminal_postcode_another_field = self.page.locator("#departure_terminal_postcode_2")
+            terminal_postcode_another_field.fill(str(terminal_postcode_another))
+            return terminal_postcode_another_field
 
     def enter_start_date(self, start_date):
         start_date_field = self.page.get_by_label("Start Date")

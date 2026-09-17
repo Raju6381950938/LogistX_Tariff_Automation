@@ -26,7 +26,7 @@ class FreightPage:
         return currency_field
 
     def enter_density(self, density):
-            density_field = self.page.get_by_label("Density")
+            density_field = self.page.get_by_label("density")
     
             density_field.fill(str(density))
     
@@ -161,11 +161,11 @@ class FreightPage:
             return fuel_surcharge_field
         
     def select_fuel_surcharge_uom_and_basis(self, uom, basis):
-            fuel_surcharge_uom_dropdown = self.page.locator("#fr-fuel-rate-unit")
-            fuel_surcharge_uom_dropdown.scroll_into_view_if_needed()
-            fuel_surcharge_uom_dropdown.select_option(label=uom)
+        fuel_surcharge_uom_dropdown = self.page.locator("#fr-fuel-rate-unit")
+        fuel_surcharge_uom_dropdown.scroll_into_view_if_needed()
+        fuel_surcharge_uom_dropdown.select_option(label=uom)
     
-            if uom == "kilogram":
+        if uom == "kilogram":
                 fuel_surcharge_basis_dropdown = self.page.locator("#fr-fuel-rate-basis")
                 fuel_surcharge_basis_dropdown.scroll_into_view_if_needed()
                 fuel_surcharge_basis_dropdown.select_option(label=basis)
@@ -190,9 +190,9 @@ class FreightPage:
         return transit_days_field
 
     def enter_document_name(self, document_name):
-             document_name_field = self.page.get_by_placeholder("e.g. Rate sheet")
-             document_name_field.fill(document_name)
+        document_name_field = self.page.get_by_placeholder("e.g. Rate sheet")
+        document_name_field.fill(document_name)
      
-             return document_name_field
+        return document_name_field
 
     

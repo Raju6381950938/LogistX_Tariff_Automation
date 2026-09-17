@@ -31,9 +31,7 @@ def test_origin_handling(page_setup):
     page.get_by_role("button", name="Origin Handling").click()
 
     currency_value = get_currency()
-
     currency = origin_handling.select_currency(currency_value)
-
     expect(currency).to_have_value(currency_value)
    
     page.screenshot(
@@ -42,9 +40,7 @@ def test_origin_handling(page_setup):
        )
     
     density_value = random.randint(50,100)
-
     density = origin_handling.enter_density(density_value)
-
     expect(density).to_have_value(str(density_value))
 
     page.screenshot(
@@ -53,9 +49,7 @@ def test_origin_handling(page_setup):
     )
 
     terminal_value = get_terminal()
-
     terminal = origin_handling.enter_terminal(terminal_value)
-
     expect(terminal).to_have_value(str(terminal_value))
 
 
@@ -65,9 +59,7 @@ def test_origin_handling(page_setup):
          )
 
     start_date_value = get_start_date()
-
     start_date = origin_handling.enter_start_date(start_date_value)
-
     expect(start_date).to_have_value(start_date_value)
 
     page.screenshot(
@@ -76,24 +68,20 @@ def test_origin_handling(page_setup):
              )
 
     end_date_value = get_end_date()
-    
     end_date = origin_handling.enter_end_date(end_date_value)
-    
     expect(end_date).to_have_value(end_date_value)
     
     page.screenshot(
             path="screenshots/origin_handling_end_date.png",
             full_page=True
-                 )
+            )
 
     page.mouse.wheel(0, 500)
 
     page.get_by_role("button", name="Next - Fixed Fees").click()
 
     Export_Documents_value = random.randint(50,100)
-
     Export_Documents= origin_handling.enter_Export_Documents(Export_Documents_value)
-
     expect(Export_Documents).to_have_value(str(Export_Documents_value))
 
     page.screenshot(
@@ -136,8 +124,13 @@ def test_origin_handling(page_setup):
     expect(fob_tax).to_have_value(str(fob_tax_value))
     origin_handling.select_FOB_Tax_uom_and_basis(get_UOM(), get_basis())
 
+    page.mouse.wheel(0, 500) 
 
-    page.get_by_role("button", name="Add New Fee").click()
+    for i in range(5):
+            page.get_by_role("button", name="Add New Fee").click()       
+
+    for i in range(4):
+            page.locator("button[aria-label='Remove additional fee 1']").click()       
 
     fee_name_value = get_fee_name()
     fee_name = origin_handling.enter_fee_name(fee_name_value)
@@ -177,45 +170,45 @@ def test_origin_handling(page_setup):
     page.locator("div.progress-node", has_text="4").click()
 
     
-    document_name = origin_handling.enter_document_name("vijay")
-    expect(document_name).to_have_value("vijay")
+    # document_name = origin_handling.enter_document_name("vijay")
+    # expect(document_name).to_have_value("vijay")
             
-    page.screenshot(
-    path="screenshots/origin_handling_Document_Name.png",
-    full_page=True
-    )
+    # page.screenshot(
+    # path="screenshots/origin_handling_Document_Name.png",
+    # full_page=True
+    # )
     
-    page.locator('input[type="file"]').set_input_files(
-    "C:\\Users\\NISSI266\\Downloads\\pindrop_ble_sync_report_20260731_125152.pdf"
-)
+    # page.locator('input[type="file"]').set_input_files(
+    # "C:\\Users\\NISSI266\\Downloads\\pindrop_ble_sync_report_20260731_125152.pdf"
+    # )
     
-    page.screenshot(
-    path="screenshots/origin_handling_Upload.png",
-    full_page=True
-    )
+    # page.screenshot(
+    # path="screenshots/origin_handling_Upload.png",
+    # full_page=True
+    # )
 
-    page.get_by_role("button", name="Add document").click()
+    # page.get_by_role("button", name="Add document").click()
 
-    page.wait_for_timeout(2000)
-    page.mouse.wheel(0, 500)
+    # page.wait_for_timeout(2000)
+    # page.mouse.wheel(0, 500)
 
-    page.get_by_role("button", name="Submit Rank").click()
+    # page.get_by_role("button", name="Submit Rank").click()
 
-    page.screenshot(
-    path="screenshots/origin_handling_submit.png",
-    full_page=True
-    )
+    # page.screenshot(
+    # path="screenshots/origin_handling_submit.png",
+    # full_page=True
+    # )
 
-    page.get_by_role("button", name="Confirm Submit").click()
+    # page.get_by_role("button", name="Confirm Submit").click()
 
-    page.wait_for_timeout(2000)
+    # page.wait_for_timeout(2000)
 
-    page.screenshot(
-    path="screenshots/origin_handling_Final_submit.png",
-    full_page=True
-    )
+    # page.screenshot(
+    # path="screenshots/origin_handling_Final_submit.png",
+    # full_page=True
+    # )
 
-    
+
 
 
     

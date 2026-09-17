@@ -9,7 +9,6 @@ from pages.freight_page import FreightPage
 
 from test_data.freight_data import (
     get_currency,
-    get_density,
     get_terminal,
     get_unpacking,
     get_arrival,
@@ -80,9 +79,7 @@ def test_freight(page_setup):
     page.mouse.wheel(0, 500)
 
     start_date_value = get_start_date()
-    
     start_date = freight.enter_start_date(start_date_value)
-    
     expect(start_date).to_have_value(start_date_value)
     
     page.screenshot(
@@ -91,9 +88,7 @@ def test_freight(page_setup):
                  )
     
     end_date_value = get_end_date()
-        
     end_date = freight.enter_end_date(end_date_value)
-        
     expect(end_date).to_have_value(end_date_value)
 
     page.mouse.wheel(0, 500)

@@ -21,9 +21,9 @@ def get_terminal():
 
 def get_start_date():
     return random.choice([
-        "2026-09-07",
-        "2026-09-08",
-        "2026-09-10",
+        "2026-09-20",
+        "2026-09-21",
+        "2026-09-22",
     ])
 
 def get_end_date():

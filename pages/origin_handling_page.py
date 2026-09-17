@@ -26,39 +26,29 @@ class OriginHandlingPage:
 
     def enter_density(self, density):
         density_field = self.page.get_by_label("Density")
-
         density_field.fill(str(density))
-
         return density_field
 
     def enter_terminal(self, terminal):
         terminal_field = self.page.get_by_label("terminal")
-
         terminal_field.fill(str(terminal))
-
         return terminal_field
 
     def enter_start_date(self, start_date):
         start_date_field = self.page.get_by_label("Start Date")
-
         start_date_field.fill(str(start_date))
-
         return start_date_field
 
 
     def enter_end_date(self, end_date):
         end_date_field = self.page.get_by_label("End Date")
-
         end_date_field.fill(str(end_date))
-
         return end_date_field
 
 
     def enter_Export_Documents(self, export_documents):
         export_documents_field = self.page.locator("#ff-export_documents")
-
         export_documents_field.fill(str(export_documents))
-
         return export_documents_field
 
     def select_uom(self, uom):
@@ -206,7 +196,7 @@ class OriginHandlingPage:
         fixed_rate_unit.select_option(label=unit)
 
         rate_field = self.page.locator("#handling-fixed-unit-0-rate")
-        rate_field.fill(str(rate))
+        rate_field.fill(f"{rate:.2f}")
 
         if unit in ["VAN", "TRUCK"]:
             self.page.locator("#handling-fixed-unit-0-vehicle-id").fill("01")

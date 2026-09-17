@@ -14,7 +14,8 @@ def page_setup():
         page = browser.new_page()
 
         page.goto(
-            "https://dev.tariff.logistx.us/264555548103179551004207127272898856",
+            "https://dev.tariff.logistx.us/506412540924531162760943578492895177" \
+            "",
             wait_until="domcontentloaded"
         )
 
@@ -22,5 +23,6 @@ def page_setup():
 
         page.wait_for_timeout(1000)
         browser.close()
+
 
 

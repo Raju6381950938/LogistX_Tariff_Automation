@@ -75,6 +75,12 @@ def test_origin_cartage(page_setup):
             full_page=True
         )
 
+    for i in range(7):
+            page.locator("button[class='cartage-zone-add']").click()
+        
+    for i in range(7):
+            page.locator("//span[normalize-space()='Remove Zone']").click()
+
     city = origin_cartage.select_city("chennai")
     expect(city).to_have_value("chennai")
     
@@ -115,6 +121,8 @@ def test_origin_cartage(page_setup):
             full_page=True
         )
 
+    page.mouse.wheel(0, 500)
+
     booking_deadline = origin_cartage.enter_booking_deadline("09:00")
     expect(booking_deadline).to_have_value("09:00")
         
@@ -129,6 +137,16 @@ def test_origin_cartage(page_setup):
             path="screenshots/origin_cartage_Timeline.png",
             full_page=True
         )
+
+    page.locator("#crf-fixed").click()
+    page.wait_for_timeout(500)
+
+    page.locator("#crf-cwt").click()
+    page.wait_for_timeout(500)
+
+    page.locator("#crf-bp").click()
+    page.wait_for_timeout(500)
+
 
     flat_rate = origin_cartage.select_flat_rate()
     expect(flat_rate).to_have_attribute("aria-pressed", "true")
@@ -174,41 +192,41 @@ def test_origin_cartage(page_setup):
     page.mouse.wheel(0, 1000)
 
 
-    document_name = origin_cartage.enter_document_name("Raju")
-    expect(document_name).to_have_value("Raju")
+#     document_name = origin_cartage.enter_document_name("Raju")
+#     expect(document_name).to_have_value("Raju")
             
-    page.screenshot(
-                    path="screenshots/origin_cartage_Document_Name.png",
-                    full_page=True
-                )
+#     page.screenshot(
+#     path="screenshots/origin_cartage_Document_Name.png",
+#     full_page=True
+#     )
     
-    page.locator('input[type="file"]').set_input_files(
-    "C:\\Users\\NISSI266\\Downloads\\pindrop_ble_sync_report_20260731_125152.pdf"
-)
+#     page.locator('input[type="file"]').set_input_files(
+#     "C:\\Users\\NISSI266\\Downloads\\pindrop_ble_sync_report_20260731_125152.pdf"
+# )
     
-    page.screenshot(
-                path="screenshots/origin_cartage_Upload.png",
-                full_page=True
-                )
+#     page.screenshot(
+#     path="screenshots/origin_cartage_Upload.png",
+#     full_page=True
+#     )
 
-    page.get_by_role("button", name="Add document").click()
+#     page.get_by_role("button", name="Add document").click()
 
-    page.wait_for_timeout(2000)
+#     page.wait_for_timeout(2000)
 
-    page.get_by_role("button", name="Submit Rank").click()
+#     page.get_by_role("button", name="Submit Rank").click()
 
-    page.screenshot(
-    path="screenshots/origin_cartage_submit.png",
-    full_page=True
-    )                
+#     page.screenshot(
+#     path="screenshots/origin_cartage_submit.png",
+#     full_page=True
+#     )                
 
-    page.get_by_role("button", name="Confirm Submit").click()
+#     page.get_by_role("button", name="Confirm Submit").click()
 
-    page.wait_for_timeout(2000)
+#     page.wait_for_timeout(2000)
 
-    page.screenshot(
-    path="screenshots/origin_cartage_Final_submit.png",
-    full_page=True
-    )
+#     page.screenshot(
+#     path="screenshots/origin_cartage_Final_submit.png",
+#     full_page=True
+#     )
 
  

@@ -30,9 +30,9 @@ def get_arrival():
 
 def get_start_date():
     return random.choice([
-        "2026-09-11",
-        "2026-09-12",
-        "2026-09-13",
+        "2026-09-20",
+        "2026-09-21",
+        "2026-09-22",
     ])
 
 def get_end_date():

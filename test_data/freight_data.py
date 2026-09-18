@@ -11,6 +11,7 @@ def get_currency():
 def get_density():
     return random.randint(10, 50)
 
+
 def get_terminal_name():
     return random.choice([
         "T1",
@@ -20,9 +21,9 @@ def get_terminal_name():
 
 def get_terminal_address():
     return random.choice([
-        "Meenambakkam",
-        "Domestic",
-        "International"
+        "Meenambakkam Airport",
+        "Kamaraj Domestic Airport",
+        "Anna International Airport",
     ])
 
 def get_terminal_postcode():
@@ -30,6 +31,11 @@ def get_terminal_postcode():
         "600020",
         "600030",
         "600040",
+    ])
+
+def get_unpacking():
+    return random.choice([
+        "PER - Perth",
     ])
 
 def get_arrival_name():
@@ -41,8 +47,9 @@ def get_arrival_name():
 
 def get_arrival_address():
     return random.choice([
-        "Domestic",
+        "Horrie Miller",
         "International",
+        "Guildford",
     ])
 
 def get_arrival_postcode():
@@ -99,9 +106,9 @@ def get_basis():
 
 def get_fee():
     return random.choice([
-        "Airline Terminal Fee",
-        "Processing Charge",
-        "Terminal Storage Fee",
+        "Conveyance Fee",
+        "Processing Fee",
+        "Dealer Prep Fee",
     ])
 
 def get_rate():

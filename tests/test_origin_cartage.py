@@ -20,7 +20,7 @@ def test_origin_cartage(page_setup):
         full_page=True
     )
 
-    density = origin_cartage.enter_density(167)
+    density = origin_cartage.enter_density("167")
     expect(density).to_have_value("167")
 
     page.screenshot(
@@ -28,17 +28,17 @@ def test_origin_cartage(page_setup):
         full_page=True
     )
 
-    for i in range(7):
+    for i in range(6):
         page.locator("button[class='add-btn departure-terminal-add']").click()
 
-    for i in range(7):
+    for i in range(6):
         page.get_by_role("button", name="Remove terminal").last.click()
 
     terminal_name = origin_cartage.enter_terminal_name("T1")
     expect(terminal_name).to_have_value("T1")
 
-    terminal_address = origin_cartage.enter_terminal_address("chennai")
-    expect(terminal_address).to_have_value("chennai")
+    terminal_address = origin_cartage.enter_terminal_address("Kamaraj Domestic Airport")
+    expect(terminal_address).to_have_value("Kamaraj Domestic Airport")
 
     terminal_postcode = origin_cartage.enter_terminal_postcode("600020")
     expect(terminal_postcode).to_have_value("600020")
@@ -89,10 +89,14 @@ def test_origin_cartage(page_setup):
             full_page=True
         )
 
-    for i in range(7):
+    page.locator("//button[normalize-space()='City limits']").click()
+
+    page.locator("//button[normalize-space()='Range']").click()
+
+    for i in range(6):
             page.locator("button[class='cartage-zone-add']").click()
         
-    for i in range(7):
+    for i in range(6):
             page.locator("//span[normalize-space()='Remove Zone']").click()
 
     city = origin_cartage.select_city("chennai")
@@ -102,6 +106,13 @@ def test_origin_cartage(page_setup):
             path="screenshots/origin_cartage_city.png",
             full_page=True
         )
+
+    for i in range(3):
+            page.locator("//button[normalize-space()='+ Add range']").click()
+        
+    for i in range(3):
+            page.locator("//button[contains(@class,'cartage-range-remove')]").last.click()
+
 
     from_postcode = origin_cartage.select_from_postcode("600002")
     expect(from_postcode).to_have_value("600002")

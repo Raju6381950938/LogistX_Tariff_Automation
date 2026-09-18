@@ -20,9 +20,8 @@ def get_terminal_name():
 
 def get_terminal_address():
     return random.choice([
-        "Meenambakkam",
-        "Domestic",
-        "International"
+        "Anna International Airport",
+        "Kamaraj Domestic Airport",
     ])
 
 def get_terminal_postcode():
@@ -41,9 +40,8 @@ def get_terminal_name_another():
 
 def get_terminal_address_another():
     return random.choice([
-        "Meenambakkam",
-        "Domestic",
-        "International"
+        "Meenambakkam Airport",
+        "Greenfield International Airport"
     ])
 
 def get_terminal_postcode_another():
@@ -102,9 +100,9 @@ def get_FOB_Tax():
 
 def get_fee_name():
     return random.choice([
-        "Income Tax",
-        "Handling Tax",
-        "Sea Tax",
+        "Customs Duty",
+        "Sales Tax",
+        "Property Tax",
     ])
 
 def get_rate():

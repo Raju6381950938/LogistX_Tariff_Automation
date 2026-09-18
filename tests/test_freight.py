@@ -1,6 +1,4 @@
 import random
-import re
-
 import pytest
 
 from playwright.sync_api import expect
@@ -32,9 +30,9 @@ from test_data.freight_data import (
     get_arrival_name,
     get_arrival_address,
     get_arrival_postcode,
+    get_unpacking,
 )
  
-
 @pytest.mark.order(3)
 def test_freight(page_setup):
 
@@ -74,6 +72,10 @@ def test_freight(page_setup):
         full_page=True
     )
 
+    unpacking_value = get_unpacking()
+    unpacking = freight.select_unpacking(unpacking_value)
+    expect(unpacking.locator("option:checked")).to_have_text(unpacking_value)
+
     arrival_name_value = get_arrival_name()
     arrival_name = freight.enter_arrival_name(arrival_name_value)
     expect(arrival_name).to_have_value(str(arrival_name_value))
@@ -98,10 +100,10 @@ def test_freight(page_setup):
     expect(start_date).to_have_value(start_date_value)
     
     page.screenshot(
-                path="screenshots/freight_start_date.png",
-                full_page=True
-                 )
-    
+            path="screenshots/freight_start_date.png",
+            full_page=True
+        )
+ 
     end_date_value = get_end_date()
     end_date = freight.enter_end_date(end_date_value)
     expect(end_date).to_have_value(end_date_value)
@@ -129,7 +131,6 @@ def test_freight(page_setup):
     
     for i in range(2):
         page.locator("button[aria-label='Remove additional fee 1']").click()
-
 
     fee_value = get_fee()
     fee = freight.enter_fee(fee_value)
@@ -187,6 +188,14 @@ def test_freight(page_setup):
     expect(notification).to_have_value(str(notification_value))
 
     page.mouse.wheel(0, 500)
+
+    page.locator("//button[normalize-space()='+ Create Routing']").click()
+    page.wait_for_timeout(500)
+
+    page.locator("//button[normalize-space()='+ Add Stop']").click()
+
+    page.locator("//span[normalize-space()='Remove Routing']").click()
+    page.wait_for_timeout(500)
     
     carrier_value = get_carrier()
     carrier = freight.select_carrier(carrier_value)
@@ -195,12 +204,11 @@ def test_freight(page_setup):
     transit_days_value = get_transit_days()
     transit_days = freight.enter_transit_days(transit_days_value)
     expect(transit_days).to_have_value(str(transit_days_value))
-
-    page.mouse.wheel(0, -300)
     
     page.get_by_role("button", name="Review & Submit →").click()
 
-    page.mouse.wheel(0, 1000)
+    page.mouse.wheel(0, -500)
+    page.mouse.wheel(0, 1500)
 
     document_name = freight.enter_document_name("Dinesh")
     expect(document_name).to_have_value("Dinesh")

@@ -47,6 +47,10 @@ class FreightPage:
             terminal_postcode_field.fill(str(terminal_postcode))
             return terminal_postcode_field
 
+    def select_unpacking(self, unpacking):
+        unpacking_field = self.page.locator("#unpacking_portcode")
+        unpacking_field.select_option(label=unpacking)
+        return unpacking_field
 
     def enter_arrival_name(self, arrival_name):
             arrival_name_field = self.page.locator("#arrival_terminal")

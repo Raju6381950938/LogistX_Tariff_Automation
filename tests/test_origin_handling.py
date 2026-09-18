@@ -195,7 +195,9 @@ def test_origin_handling(page_setup):
 
     page.locator("div.progress-node", has_text="4").click()
 
-    
+    page.mouse.wheel(0, -500)
+    page.mouse.wheel(0, 1500)
+
     document_name = origin_handling.enter_document_name("vijay")
     expect(document_name).to_have_value("vijay")
             
